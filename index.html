@@ -1,25 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <title>Untitled</title>
-    
-
-  </head>
-    
-  <body>
-  <!DOCTYPE html>
-<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>HAFIZ SHAKIL</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Stock Market</title>
 
-<!-- Meta Pixel Code -->
+    <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -29,213 +18,497 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1358185855736816');
+fbq('init', '1243659447958197');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1358185855736816&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=1243659447958197&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
-<style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family: 'Poppins', sans-serif;
-}
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
 
-body{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(135deg,#1a0000,#3b0000,#5e0000,#8b0000);
-background-size:400% 400%;
-animation:gradientMove 12s infinite alternate;
-overflow:hidden;
-}
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-@keyframes gradientMove{
-0%{background-position:0% 50%;}
-100%{background-position:100% 50%;}
-}
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
 
-/* floating glow circles */
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-.circle{
-position:absolute;
-border-radius:50%;
-filter:blur(120px);
-opacity:0.6;
-animation:float 10s infinite alternate;
-}
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
 
-.circle1{
-width:300px;
-height:300px;
-background:#ff0000;
-top:10%;
-left:10%;
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #050505;
+            color: #fff;
+        }
 
-.circle2{
-width:250px;
-height:250px;
-background:#ff4d4d;
-bottom:10%;
-right:10%;
-}
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at top, rgba(220, 30, 45, 0.18), transparent 40%),
+                linear-gradient(135deg, #050505, #111111);
+            z-index: -1;
+        }
 
-@keyframes float{
-0%{transform:translateY(0px);}
-100%{transform:translateY(-60px);}
-}
+        .main-section {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 25px 12px;
+        }
 
-/* glass card */
+        .main-section .container {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+        }
 
-.card{
-position:relative;
-width:340px;
-padding:40px 30px;
-border-radius:25px;
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,0.2);
-text-align:center;
-color:white;
-box-shadow:0 20px 60px rgba(0,0,0,0.6);
-animation:cardFloat 4s ease-in-out infinite;
-}
+        .main-box {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+            background: rgba(20, 20, 20, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 22px;
+            padding: 28px 22px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+        }
 
-@keyframes cardFloat{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-10px);}
-}
+        .logo-box {
+            position: relative;
+            width: 115px;
+            height: 115px;
+            margin: 0 auto 15px;
+        }
 
-.profile{
-width:110px;
-height:110px;
-border-radius:50%;
-border:4px solid white;
-object-fit:cover;
-margin-bottom:15px;
-}
+        .logo {
+            width: 115px;
+            height: 115px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #e53935;
+            display: block;
+        }
 
-h2{
-margin-bottom:10px;
-font-size:22px;
-}
+        .verify {
+            position: absolute;
+            right: 2px;
+            bottom: 4px;
+            width: 30px;
+            height: 30px;
+            background: #e53935;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #141414;
+            font-size: 13px;
+        }
 
-.text{
-font-size:14px;
-opacity:0.9;
-line-height:1.6;
-margin-bottom:25px;
-}
+        .title {
+            margin: 8px 0;
+            font-size: 30px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
 
-/* button */
+        .red {
+            color: #ef3b3b;
+        }
 
-.btn{
-display:inline-flex;
-align-items:center;
-gap:12px;
-background:linear-gradient(45deg,#00c6ff,#0072ff);
-padding:14px 28px;
-border-radius:50px;
-font-weight:bold;
-color:white;
-text-decoration:none;
-font-size:16px;
-transition:0.4s;
-position:relative;
-overflow:hidden;
-}
+        .white {
+            color: #fff;
+        }
 
-.btn:hover{
-transform:scale(1.1);
-box-shadow:0 0 25px #00c6ff;
-}
+        .users,
+        .trusted {
+            font-size: 14px;
+            margin-top: 8px;
+            color: #d6d6d6;
+            line-height: 1.5;
+        }
 
-.btn i{
-font-size:18px;
-}
+        .users i,
+        .trusted i {
+            color: #ef3b3b;
+            margin-right: 6px;
+        }
 
-/* disclaimer */
+        .hindi {
+            margin: 22px 0 17px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #eeeeee;
+        }
 
-.disclaimer{
-margin-top:20px;
-font-size:11px;
-opacity:0.6;
-text-align:center;
-color:white;
-}
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            min-height: 52px;
+            padding: 15px 14px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #e53935, #b71c1c);
+            color: #fff;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.3;
+            box-shadow: 0 8px 25px rgba(229, 57, 53, 0.28);
+            transition: 0.25s ease;
+        }
 
-.ads{
-text-align:center;
-margin-top:5px;
-font-size:12px;
-color:white;
-}
+        .download-btn:hover {
+            color: #fff;
+            transform: translateY(-2px);
+        }
 
-.ads a{
-color:#00c6ff;
-font-weight:bold;
-text-decoration:none;
-}
+        .download-btn i {
+            flex-shrink: 0;
+        }
 
-</style>
+        .feature-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #101010;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .feature-item {
+            text-align: left;
+            font-size: 13px;
+            color: #e5e5e5;
+            padding: 9px 4px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            line-height: 1.5;
+        }
+
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+
+        .feature-item i {
+            color: #ef3b3b;
+            margin-right: 9px;
+            width: 18px;
+        }
+
+        .footer-box {
+            margin-top: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #999;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .footer-box i {
+            color: #e53935;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .footer-box p {
+            margin: 0;
+        }
+
+        /* Mobile */
+        @media (max-width: 576px) {
+
+            .main-section {
+                min-height: 100vh;
+                padding: 15px 10px;
+                align-items: flex-start;
+            }
+
+            .main-section .container {
+                margin-top: 10px;
+            }
+
+            .main-box {
+                width: 100%;
+                max-width: 100%;
+                padding: 24px 15px;
+                border-radius: 18px;
+            }
+
+            .logo-box,
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .logo-box {
+                margin-bottom: 14px;
+            }
+
+            .verify {
+                width: 28px;
+                height: 28px;
+                right: 0;
+                bottom: 3px;
+                font-size: 12px;
+            }
+
+            .title {
+                font-size: 26px;
+                margin: 7px 0;
+            }
+
+            .users,
+            .trusted {
+                font-size: 13px;
+            }
+
+            .hindi {
+                font-size: 14px;
+                margin: 18px 0 15px;
+            }
+
+            .download-btn {
+                min-height: 50px;
+                padding: 14px 10px;
+                gap: 9px;
+                font-size: 15px;
+                border-radius: 11px;
+            }
+
+            .feature-box {
+                margin-top: 18px;
+                padding: 12px;
+            }
+
+            .feature-item {
+                font-size: 12px;
+                padding: 9px 2px;
+            }
+
+            .feature-item i {
+                margin-right: 7px;
+                width: 16px;
+            }
+
+            .footer-box {
+                margin-top: 19px;
+                gap: 8px;
+                font-size: 10px;
+            }
+
+            .footer-box i {
+                font-size: 16px;
+            }
+        }
+
+        /* Small Mobile */
+        @media (max-width: 360px) {
+
+            .main-section {
+                padding: 10px 8px;
+            }
+
+            .main-box {
+                padding: 21px 12px;
+            }
+
+            .logo-box,
+            .logo {
+                width: 92px;
+                height: 92px;
+            }
+
+            .title {
+                font-size: 24px;
+            }
+
+            .users,
+            .trusted {
+                font-size: 12px;
+            }
+
+            .download-btn {
+                font-size: 14px;
+                gap: 7px;
+                padding: 13px 8px;
+            }
+
+            .feature-item {
+                font-size: 11px;
+            }
+
+            .footer-box {
+                font-size: 9px;
+            }
+        }
+    </style>
+
 </head>
 
 <body>
 
-<div class="circle circle1"></div>
-<div class="circle circle2"></div>
+<div class="bg-overlay"></div>
 
-<div>
+<section class="main-section">
 
-<div class="card">
+    <div class="container">
 
-<!-- JPG PHOTO -->
-<img src="https://i.ibb.co/W41QZtKz/logo.png" class="profile">
+        <div class="row justify-content-center">
 
-<h2>👑 𝗕𝗧𝗦𝗧 𝗤𝗨𝗘𝗘𝗡™ 👑</h2>
+            <div class="col-12">
 
-<div class="text">
-📊 Daily Market Analysis & Learning<br>
-🎯 14+ Years Trading Experience<br>
-🔥 Beginner To Advanced Guidance
-</div>
+                <div class="main-box">
 
-<a class="btn" href="https://telegram.dog/+X0fZAFTVjUNjZWM9" target="_blank">
-<i class="fab fa-telegram"></i>
-𝗝𝗼𝗶𝗻 𝗩𝗶𝗽 𝗚𝗿𝗼𝘂𝗽
-<i class="fab fa-telegram"></i>
-</a>
+                    <!-- Logo -->
+                    <div class="logo-box">
 
-</div>
+                        <img src="https://i.ibb.co/CpQ3YwPg/logo.png"
+                             class="logo img-fluid"
+                             alt="Stock Market">
 
-<div class="disclaimer">
-This channel is for educational and informational purposes only.
-</div>
+                        <div class="verify">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
 
-<div class="ads">
-Ads Managed By <a href="https://t.me/+LiETHEERYtgzNjU1" target="_blank">Ads2laabh</a>
-</div>
+                    </div>
 
-</div>
+                    <!-- Heading -->
+                    <h1 class="title">
 
-<script>
+                        <span>-</span>
+                        <span class="red">Grow</span>
+                        <span class="white">Market</span>
+                        <span>-</span>
 
-setTimeout(function(){
-window.location.href="https://telegram.dog/+X0fZAFTVjUNjZWM9";
-},30000);
+                    </h1>
 
-</script>
+                    <!-- Users -->
+                    <div class="users">
+
+                        <i class="fa-solid fa-users"></i>
+                        100K+ Active Members
+
+                    </div>
+
+                    <!-- Trusted -->
+                    <div class="trusted">
+
+                        <i class="fa-solid fa-chart-line"></i>
+                        Smart Market Insights & Trading Ideas
+
+                    </div>
+
+                    <!-- Hindi -->
+                    <p class="hindi">
+
+                    </p>
+
+                    <!-- Join -->
+                    <a href="https://t.me/+eS2sX13bt01kNGNl"
+                       class="download-btn">
+
+                        <i class="fa-brands fa-telegram"></i>
+
+                        Join Now For Free Telegram
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                    <!-- Features -->
+                    <div class="feature-box">
+
+                        <div class="feature-item">
+
+                            <i class="fa-solid fa-bolt"></i>
+                            Daily Market Updates & Analysis
+
+                        </div>
+
+                        <div class="feature-item">
+
+                            <i class="fa-solid fa-chart-line"></i>
+                            Nifty & Bank Nifty Market Insights
+
+                        </div>
+
+                        <div class="feature-item">
+
+                            <i class="fa-solid fa-bullseye"></i>
+                            Stocks & Market Watchlist Ideas
+
+                        </div>
+
+                        <div class="feature-item">
+
+                            <i class="fa-solid fa-clock"></i>
+                            Regular Market Updates
+
+                        </div>
+
+                    </div>
+
+                    <!-- Join -->
+                    <a href="https://t.me/+eS2sX13bt01kNGNl"
+                       class="download-btn mt-4">
+
+                        <i class="fa-brands fa-telegram"></i>
+
+                        Join Now For Free Telegram
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                    <!-- Footer -->
+                    <div class="footer-box">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        <div>
+
+                            <p>Market information is provided for educational purposes only.</p>
+
+                            <p>Please do your own research before making investment decisions.</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
-</html>
-    
-  </body>
-  
 </html>
